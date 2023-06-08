@@ -30,6 +30,11 @@ export default {
         .catch(err => {
           console.log(err);
         })
+      //Cambio stringa limgua in bandiera
+      let languageFilm = store.apiLanguageFilm;
+      if (languageFilm === "en") {
+        languageFilm = `ok`
+      }
     }
   },
   created() {
