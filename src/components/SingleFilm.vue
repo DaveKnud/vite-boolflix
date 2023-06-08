@@ -19,8 +19,6 @@ export default {
         <br>
         <h5>{{ details.vote_average }}</h5>
 
-        <h3></h3>
-
 
     </div>
 </template>
