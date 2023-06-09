@@ -18,7 +18,6 @@ export default {
     }
   },
   methods: {
-    //FILMS
     getFilms() {
       let movies = store.apiURL;
       if (store.searchText !== "") {
@@ -34,7 +33,6 @@ export default {
         })
     },
 
-    //SERIES
     getSerie() {
       let serie = store.apiSerieUrl;
       if (store.searchText !== "") {
@@ -67,6 +65,7 @@ export default {
   <AppHeader message="Boolflix" />
   <main>
     <AppSearch @mysearch="getFilms" />
+    <AppSearch @mysearch="getSerie" />
     <FilmList />
     <SerieList />
   </main>
