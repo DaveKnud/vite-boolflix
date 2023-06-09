@@ -4,13 +4,15 @@ import axios from 'axios';
 import AppHeader from './components/AppHeader.vue';
 import FilmList from './components/FilmList.vue';
 import SerieList from './components/SerieList.vue';
-import AppSearch from './components/AppSearch.vue';
+import AppFilmSearch from './components/AppFilmSearch.vue';
+import AppSerieSearch from './components/AppSerieSearch.vue';
 export default {
   components: {
     AppHeader,
     FilmList,
-    AppSearch,
-    SerieList
+    AppFilmSearch,
+    SerieList,
+    AppSerieSearch
   },
   data() {
     return {
@@ -64,8 +66,8 @@ export default {
 <template>
   <AppHeader message="Boolflix" />
   <main>
-    <AppSearch @mysearch="getFilms" />
-    <AppSearch @mysearch="getSerie" />
+    <AppFilmSearch @mysearch="getFilms" />
+    <AppSerieSearch @seriesearch="getSerie" />
     <FilmList />
     <SerieList />
   </main>

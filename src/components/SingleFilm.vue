@@ -10,6 +10,9 @@ export default {
 
 <template>
     <div class="SingleFilm">
+        <div class="cover-conatiner">
+            <img :src="'http://image.tmdb.org/t/p/w342/' + details.poster_path" alt="">
+        </div>
         <!-- <img :src="details.card_images[0].image_url_small" alt="info.image"> -->
         <h4> {{ details.title }}</h4>
         <br>
@@ -18,16 +21,16 @@ export default {
         <br>
         <h5>{{ details.vote_average }}</h5>
         <!-- English language flag -->
-        <div class="img-container" v-if="details.original_language === `en`"><img
+        <div class="flag-container" v-if="details.original_language === `en`"><img
                 src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Flag_of_the_United_Kingdom_%281-2%29.svg" alt="">
         </div>
         <!-- Italian language flag -->
-        <div class="img-container" v-else-if="details.original_language === `it`"><img
+        <div class="flag-container" v-else-if="details.original_language === `it`"><img
                 src="https://upload.wikimedia.org/wikipedia/en/thumb/0/03/Flag_of_Italy.svg/800px-Flag_of_Italy.svg.png"
                 alt="">
         </div>
         <!-- German language flag -->
-        <div class="img-container" v-else-if="details.original_language === `de`"><img
+        <div class="flag-container" v-else-if="details.original_language === `de`"><img
                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFwAAABcCAMAAADUMSJqAAAAGFBMVEUAAAD7wgbgCB1rBA7nCB7fAB7zmg/8xQVN/1ogAAAAQklEQVRoge3MsRGAIAAEsBcU9t+YCSy/0EsGSAIAAL8zi3IXZRTJ5XK5XC6Xy7+dP0VZRdlFuYrkcrlcLpfL5fI3B4yeJ4n0mroXAAAAAElFTkSuQmCC"
                 alt="">
         </div>
@@ -38,7 +41,7 @@ export default {
 <style scoped lang ="scss">
 .SingleFilm {
     width: 300px;
-    height: 300px;
+    min-height: 500px;
     border: 5px solid white;
     text-align: center;
 }
@@ -47,11 +50,18 @@ h4 {
     color: rgb(0, 0, 0);
 }
 
-.img-container {
+.cover-conatiner {
     display: flex;
-    justify-self: center;
-    width: 20px;
+    max-width: 100%;
+    max-height: 400px;
+    padding: 20px;
+}
+
+.flag-container {
+    display: flex;
+    width: 100%;
     height: 10px;
+    justify-content: center;
 }
 
 img {
