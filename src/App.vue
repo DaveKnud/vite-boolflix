@@ -3,12 +3,14 @@ import { store } from './store.js';
 import axios from 'axios';
 import AppHeader from './components/AppHeader.vue';
 import FilmList from './components/FilmList.vue';
+import SerieList from './components/SerieList.vue';
 import AppSearch from './components/AppSearch.vue';
 export default {
   components: {
     AppHeader,
     FilmList,
-    AppSearch
+    AppSearch,
+    SerieList
   },
   data() {
     return {
@@ -16,12 +18,12 @@ export default {
     }
   },
   methods: {
+    //FILMS
     getFilms() {
       let movies = store.apiURL;
       if (store.searchText !== "") {
         movies += `${store.searchText}`
       }
-
       axios.get(movies)
         .then(res => {
           store.FilmList = res.data.results;
@@ -30,17 +32,35 @@ export default {
         .catch(err => {
           console.log(err);
         })
-      //Cambio stringa limgua in bandiera
-      let languageFilm = store.apiLanguageFilm;
-      if (languageFilm === "en") {
-        languageFilm = `ok`
+    },
+
+    //SERIES
+    getSerie() {
+      let serie = store.apiSerieUrl;
+      if (store.searchText !== "") {
+        serie += `${store.searchText}`
       }
+
+      axios.get(serie)
+        .then(res => {
+          store.SerieList = res.data.results;
+          console.log(serie);
+        })
+        .catch(err => {
+          console.log(err);
+        })
     }
   },
   created() {
     this.getFilms()
+  },
+  created() {
+    this.getSerie()
   }
 }
+
+
+
 </script>
 
 <template>
@@ -48,6 +68,7 @@ export default {
   <main>
     <AppSearch @mysearch="getFilms" />
     <FilmList />
+    <SerieList />
   </main>
 </template>
 
